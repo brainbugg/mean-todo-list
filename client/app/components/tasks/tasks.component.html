@@ -1,23 +1,30 @@
-<form class="well" (submit)="addTask($event)">
-	<div class="form-group">
-		<input type="text" [(ngModel)]="title" name="title" class="form-control" placeholder="Add Task...">
-		<button type="submit">Send</button>
-	</div>
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<form class="form form-inline well text-center" (submit)="addTask($event)">
+			<div class="form-group">
+				<input type="text" [(ngModel)]="title" name="title" class="form-control input-lg" placeholder="Add a Task">
+				<button type="submit" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-arrow-down"></span></button>
+			</div>
 
-</form>
-
-<div class="task-list row">
-	<div  *ngFor="let task of tasks">
-		<div class="row">
-			<div class="col-md-1">
-				<input type="checkbox" class="form-control" [checked]="task.isDone" (click)="updateStatus(task)">
-			</div>
-			<div class="col-md-7">
-				{{task.title}}
-			</div>
-			<div class="col-md-4">
-				<button type="button" value="Delete" class="btn btn-danger" (click)="deleteTask(task._id)">✘</button>
-			</div>
-		</div>
+		</form>
 	</div>
 </div>
+
+
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<table class="table table-bordered table-striped">
+			<tr>
+				<th>Completion</th>
+				<th>Activity</th>
+				<th>Actions</th>
+			</tr>
+			<tr *ngFor="let task of tasks">
+				<td><input type="checkbox" class="form-control" [checked]="task.isDone" (click)="updateStatus(task)"></td>
+				<td><P>{{task.title}}</P></td>
+				<td><button type="button" value="Delete" class="btn btn-danger" (click)="deleteTask(task._id)">✘</button></td>
+			</tr>
+		</table>
+	</div>
+</div>
+
